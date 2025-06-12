@@ -55,9 +55,9 @@ INSERT INTO ORDERS VALUES
 =========================================================================
 Self Join
 CREATE TABLE Employees (
-  EmployeeID   INT       PRIMARY KEY,
-  Name         VARCHAR(50),
-  ManagerID    INT       NULL
+  EmployeeID INT,
+  Name VARCHAR(50),
+  ManagerID INT
 );
 
 INSERT INTO Employees (EmployeeID, Name, ManagerID) VALUES
@@ -80,10 +80,10 @@ LEFT JOIN Employees AS m
 4.8-Window Function
 --Create table query
 CREATE TABLE employee (
-  Name       VARCHAR(50),
-  Age        INT,
+  Name VARCHAR(50),
+  Age INT,
   Department VARCHAR(50),
-  Salary     INT
+  Salary INT
 );
 
 INSERT INTO employee (Name, Age, Department, Salary) VALUES
@@ -133,4 +133,17 @@ SELECT
   LAG(SalesAmt) OVER (PARTITION BY Dept ORDER BY SaleDate) AS PrevSale,
   LEAD(SalesAmt) OVER (PARTITION BY Dept ORDER BY SaleDate) AS NextSale
 FROM employee_sales;
-
+=========================================================================
+CTE
+CREATE TABLE Employees (
+    Name VARCHAR(50),
+    Age INT,
+    Department VARCHAR(50),
+    Salary INT
+);
+INSERT INTO Employees (Name, Age, Department, Salary) VALUES
+('Ramesh', 20, 'Finance', 50000),
+('Suresh', 22, 'Finance', 50000),
+('Ram',    28, 'Finance', 20000),
+('Deep',   25, 'Sales',   30000),
+('Pradeep',22, 'Sales',   20000);
