@@ -1,5 +1,26 @@
 Joins
+CREATE TABLE Emp (
+    ID INT,
+    Name VARCHAR(50),
+    Salary INT
+);
+-- EmpDetails
+INSERT INTO Emp (ID, Name, Salary) VALUES
+(1, 'John', 40000),
+(2, 'Alex', 25000),
+(3, 'Simon', 43000);
 
+CREATE TABLE MaritalStatus (
+    ID INT,
+    Name VARCHAR(50),
+    Status VARCHAR(20)
+);
+-- MaritalStatus
+INSERT INTO MaritalStatus (ID, Name, Status) VALUES
+(1, 'John', 'Married'),
+(3, 'Simon', 'Married'),
+(4, 'Stella', 'Unmarried');
+=========================================================================
 --Create 1st table
 CREATE TABLE CUSTOMERS (
    ID INT,
