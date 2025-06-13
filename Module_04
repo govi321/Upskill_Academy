@@ -142,8 +142,12 @@ CREATE TABLE Employees (
     Salary INT
 );
 INSERT INTO Employees (Name, Age, Department, Salary) VALUES
-('Ramesh', 20, 'Finance', 50000),
-('Suresh', 22, 'Finance', 50000),
-('Ram',    28, 'Finance', 20000),
-('Deep',   25, 'Sales',   30000),
-('Pradeep',22, 'Sales',   20000);
+('Ramesh', 20, 'Finance', 10000),
+('Suresh', 22, 'Finance', 20000),
+('Ram',    28, 'Finance', 90000),
+('Deep',   25, 'Sales',   40000),
+('Pradeep',22, 'Sales',   50000),
+('Deep',   25, 'Sales',   60000),
+('Pradeep',22, 'Sales',   80000);
+
+SELECT * FROM Employees;
