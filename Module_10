@@ -1,1 +1,76 @@
+10.4-Reading CSV files:
+# 4- Reading multiline CSV files
+df = spark.read \
+    .option("header", "true") \
+    .option("multiLine", "true") \
+    .option("quote", "\"") \
+    .csv("/FileStore/tables/employees_multiline.csv")
 
+df.show(truncate=False)
+
+# 2. Nested JSON Example
+df_nested = spark.read \
+    .option("multiline", "true") \
+    .json("/FileStore/tables/Nested_json.json")
+
+df_nested.printSchema()
+df_nested.show(truncate=False)
+
+======================================================================================
+10.9-Schema Management
+# 2- Define Schema Manually (using StructType)
+
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType, FloatType
+
+schema = StructType([
+    StructField("ID", IntegerType(), True),
+    StructField("FIRST_NAME", StringType(), True),
+    StructField("LAST_NAME", StringType(), True),
+    StructField("DEPARTMENT", StringType(), True),
+    StructField("SALARY", FloatType(), True)
+])
+
+df = spark.read \
+    .option("header", True) \
+    .schema(schema) \
+    .csv("/FileStore/tables/Employees.csv")
+display(df)
+df.printSchema()
+
+# More reliable and controlled.
+
+====================================================================================
+10.11-Introduction to schema enforcement
+# 1. Schema Using DDL String (Declarative schema)
+schema_ddl = "ID INT, FIRST_NAME STRING, LAST_NAME STRING, DEPARTMENT STRING, SALARY DOUBLE"
+
+df = spark.read \
+    .option("header", True) \
+    .schema(schema_ddl) \
+    .csv("/FileStore/tables/Employees.csv")
+
+df.printSchema()
+df.show()
+# 2-Schema Using StructType (Programatic schema)
+# 2- Define Schema Manually (using StructType)
+
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType, FloatType
+
+schema = StructType([
+    StructField("ID", IntegerType(), True),
+    StructField("FIRST_NAME", StringType(), True),
+    StructField("LAST_NAME", StringType(), True),
+    StructField("DEPARTMENT", StringType(), True),
+    StructField("SALARY", FloatType(), True)
+])
+
+df = spark.read \
+    .option("header", True) \
+    .schema(schema) \
+    .csv("/FileStore/tables/Employees.csv")
+display(df)
+df.printSchema()
+
+# More reliable and controlled.
+
+========================================================================================
