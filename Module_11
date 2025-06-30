@@ -1,1 +1,22 @@
+# 11.6- Types of joins:
+# 1st Dataframe
+data = ([1, "sravan", "TCS"],
+        [2, "ojaswi", "WIPRO"], 
+        [3, "rohith", "CAPGEMINI"],
+        [4, "sridevi", "COGNIZANT"], 
+        [5, "bobby", "ZENSAR"])
 
+cols = ['ID', 'Name', 'Company']
+employee = spark.createDataFrame(data, cols)
+display(employee)
+
+# 2nd Dataframe
+data = ([1, "45000", "IT"],
+         [2, "145000", "Manager"],
+         [3, "45000", "HR"],
+         [4, "34000", "Sales"])
+
+cols = ['ID', 'salary', 'department']
+department = spark.createDataFrame(data, cols)
+
+display(department)
