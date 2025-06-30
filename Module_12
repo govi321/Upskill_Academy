@@ -1,3 +1,23 @@
+12.1- Creating data frame
+# Sample data
+data = [
+    (1, "John", "Doe", "Engineering", 70000),
+    (2, "Jane", "Smith", "HR", 50000),
+    (3, "Mike", "Johnson", "Finance", 60000),
+    (4, "Emily", "Davis", "Engineering", 75000),
+    (5, "Robert", "Brown", "Marketing", 55000),
+    (6, "Linda", "Wilson", "HR", 52000)
+]
+
+# Column names
+columns = ["ID", "FIRST_NAME", "LAST_NAME", "DEPARTMENT", "SALARY"]
+
+# Create DataFrame
+df_dept = spark.createDataFrame(data, columns)
+
+# Show the DataFrame
+display(df_dept)
+-----------------------------------------------------------
 # 12.2-Creating temporary views on DataFrames.
 
 # Sample data
