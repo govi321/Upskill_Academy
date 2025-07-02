@@ -1,1 +1,18 @@
+14.4.5- Complete example
+# Run this in new notebooks
+# Create year selection widget
+dbutils.widgets.dropdown("year", "2024", ["2022", "2023", "2024", "2025"], "Select Year")
+
+# Get selected year
+selected_year = dbutils.widgets.get("year")
+
+# Use it to filter data
+df = spark.read.option("header", True).csv("/mnt/sales/orders.csv")
+df_filtered = df.filter(df.OrderDate.startswith(selected_year))
+df_filtered.show()
+
+dbutils.widgets.dropdown("year", "2024", ["2022", "2023", "2024"], "Select Year")
+selected_year = dbutils.widgets.get("year")
+
+orders_df.filter(col("Order_Year") == int(selected_year)).show()
 
