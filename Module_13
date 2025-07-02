@@ -1,1 +1,32 @@
+# 13.5.1-Mounting via Access Key
+dbutils.fs.mount(
+  source = "wasbs://<container>@<storage_account>.blob.core.windows.net/",
+  mount_point = "/mnt/Access_container",
+  extra_configs = {"fs.azure.account.key.<storage_account>.blob.core.windows.net": "<access_key>"}
+)
+---------------------------------------------
+13.5.2 -Mounting via SAS token
+dbutils.fs.mount(
+  source = "wasbs://<container>@<storage_account>.blob.core.windows.net/",
+  mount_point = "/mnt/<mount-name>",
+  extra_configs = {"fs.azure.sas.<container>.<storage_account>.blob.core.windows.net": "<sas_token>"}
+)
+------------------------------------------------
+13.3.6- Service Principal with OAuth2 (Recommended for Enterprise Use)
+# Replace <client_id> in 3rd line using client_id with double quote("")
+# Replace <client_secret> in 4th line with secret with double quote("")
+# Replace <tenant_id> in 5th line without double quote("")
+configs = {
+  "fs.azure.account.auth.type": "OAuth",
+  "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+  "fs.azure.account.oauth2.client.id": "<client_id>",
+  "fs.azure.account.oauth2.client.secret": "<client_secret>",
+  "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant_id>/oauth2/token"
+}
 
+dbutils.fs.mount(
+  source = "abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/",
+  mount_point = "/mnt/<mount_name>",
+  extra_configs = configs
+)
+----------------------------------------------------
