@@ -30,3 +30,7 @@ dbutils.fs.mount(
   extra_configs = configs
 )
 ----------------------------------------------------
+# Secret Scope using Access key
+spark.conf.set(
+    "fs.azure.account.key.<storage-account>.dfs.core.windows.net",
+    dbutils.secrets.get(scope="<scope>", key="<storage-account-access-key>"))
