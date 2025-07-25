@@ -55,3 +55,5 @@ SELECT * FROM Customers;
 SELECT * FROM Products;
 SELECT * FROM Orders;
 SELECT * FROM Employees;
+
+select table_schema, table_name from information_schema.tables;
