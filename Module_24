@@ -1,1 +1,57 @@
+24.3-First Pipeline: Azure SQL DB to ADLS
+CREATE DATABASE PracticeDB;
+GO
+USE PracticeDB;
+GO
+--1. Customers Table
+CREATE TABLE Customers (
+    CustomerID INT,
+    Name NVARCHAR(50),
+    City NVARCHAR(50)
+);
 
+INSERT INTO Customers VALUES
+(1, 'Alice', 'Pune'),
+(2, 'Bob', 'Mumbai'),
+(3, 'Charlie', 'Delhi');
+
+--2. Products Table
+CREATE TABLE Products (
+    ProductID INT,
+    ProductName NVARCHAR(50),
+    Price DECIMAL(10,2)
+);
+
+INSERT INTO Products VALUES
+(101, 'Laptop', 65000),
+(102, 'Mouse', 500),
+(103, 'Keyboard', 1200);
+
+--3. Orders Table
+CREATE TABLE Orders (
+    OrderID INT,
+    CustomerID INT,
+    OrderDate DATE
+);
+
+INSERT INTO Orders VALUES
+(1001, 1, '2024-05-01'),
+(1002, 2, '2024-06-15'),
+(1003, 1, '2024-07-10');
+
+--4. Employees Table
+CREATE TABLE Employees (
+    EmployeeID INT,
+    FullName NVARCHAR(50),
+    Department NVARCHAR(50)
+);
+
+INSERT INTO Employees VALUES
+(201, 'Gaurav Kurhekar', 'Data'),
+(202, 'Neha Patil', 'HR'),
+(203, 'Ravi Kumar', 'IT');
+
+SELECT * FROM Customers;
+SELECT * FROM Products;
+SELECT * FROM Orders;
+SELECT * FROM Employees;
